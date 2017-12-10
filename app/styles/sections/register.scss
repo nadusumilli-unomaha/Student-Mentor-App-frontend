@@ -1,0 +1,39 @@
+.reg-input-field {
+  width: 100% !important;
+}
+
+.reg-form-row {
+  margin-top: 3px;
+}
+
+
+.reg-label {
+  margin-bottom: 2px;
+  margin-left: 1px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.has-success {
+    border-color: #468847 ;
+    color: #468847 ;
+}
+
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.right-addon input { padding-right: 30px; }

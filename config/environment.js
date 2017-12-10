@@ -3,9 +3,27 @@
 
 module.exports = function(environment) {
   let ENV = {
+    torii: {
+      // a 'session' property will be injected on routes and controllers
+      sessionServiceName: 'session',
+      allowUnsafeRedirect: true,
+      providers: {
+        // 'facebook-oauth2': {
+        //   apiKey:      '1128913990495754',
+        //   redirectUri: '/index' // default is /torii/redirect.html
+        // },
+        'google-oauth2': {
+          apiKey:      '520867507671-372tknbjmqca11a3t3guhqhmrsonojfj.apps.googleusercontent.com',
+          redirectUri: 'http://localhost:4200/', // default is /torii/redirect.html
+          scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+        }
+      }
+    },
     modulePrefix: 'frontend',
     environment,
     rootURL: '/',
+    routerRootURL: '/',
+    domainURL: 'http://localhost',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -44,7 +62,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.rootURL = "static/ember/";
+    ENV.routerRootURL = '/';
+    ENV.domainURL = 'http://localhost';
   }
 
   return ENV;
