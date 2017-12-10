@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="well">
+				{{page-numbers content=pagedContent}}
 				{{#each pagedContent as |mentor i|}}
 					<div class="panel panel-default">
 						<div class="panel-body">
@@ -16,7 +17,7 @@
 								{{mentor.fieldofstudy}}<br/>
 							</div>
 							<div class="emailSubmit">
-								{{#bs-button  onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}Open Modal{{/bs-button}}
+								{{#bs-button class="btn btn-primary" onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}Sign Up{{/bs-button}}
 							</div>
 						</div>
 					</div>
@@ -33,7 +34,6 @@
 						</div>
 					{{/bs-form}}
 				{{/bs-modal-simple}}
-				 
 				{{page-numbers content=pagedContent}}
 			</div>
 		</div>
