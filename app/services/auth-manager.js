@@ -64,7 +64,7 @@ export default Service.extend({
 					auth.get('routing').transitionTo('index');
 				}
 				else{
-					auth.get('routing').transitionTo('mentor');
+					auth.get('routing').transitionTo('mentors.index');
 				}
 				
 				console.log('Login POST Request to ../api/session/ was successful.');  
@@ -122,6 +122,12 @@ export default Service.extend({
 				auth.set('user', auth.get('store').findRecord('user', response.data.userid));
 				auth.set('isLoggedIn', true);
 				auth.set('isSuperUser', response.data.issuperuser);
+				if(response.data.issuperuser){
+					auth.get('routing').transitionTo('index');
+				}
+				else{
+					auth.get('routing').transitionTo('mentors.index');
+				}
 			} else{
 				//errors
 				console.log('The user is not currently logged in.');

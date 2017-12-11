@@ -1,16 +1,40 @@
 <div class="container">
 	<div class="row adminButtons">
 		<div class="col-md-12">
-			<button type="button" class="btn btn-primary">Add mentors</button>
-			<button type="button" class="btn btn-primary">Manage Students</button>
+			{{#link-to 'mentors.create'}}<a class="btn btn-primary">Add Mentors</a>{{/link-to}}
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6">
-			mentors
-		</div>
-		<div class="col-md-6">
-			students
-		</div>		
+		<h2>Mentors</h2>
+		<p>The table contains all the mentors and the students who enrolled under them.</p>            
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th >Mentors</th>
+					<th >Students</th>
+					<th >Actions</th>
+				</tr>
+			</thead>
+			{{#each model as |mentor|}}
+				<tbody>
+					{{#each mentor.students as |student i|}}
+						<tr>
+							{{#if (equal i 0)}}
+								<td rowspan={{mentor.students.length}}>{{mentor.user.username}}</td>
+							{{/if}}
+							<td>{{student.user.username}}</td>
+							<td>{{#bs-button class="btn btn-primary" onClick=(action "removeMentor" mentor.id student.id)}}Detach Student{{/bs-button}}</td>
+						</tr>
+					{{/each}}
+					{{#if (equal mentor.students.length 0)}}
+						<tr>
+							<<td>{{mentor.user.username}}</td>
+							<<td></td>
+							<<td></td>
+						</tr>
+					{{/if}}
+				</tbody>
+			{{/each}}
+		</table>
 	</div>
 </div>

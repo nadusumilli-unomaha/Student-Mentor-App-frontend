@@ -6,4 +6,8 @@ export default Route.extend({
 	beforeModel(transition) {
 		this.get('authManager').routeRestriction(transition, 'login');
 	},
+
+	model() {
+		return this.store.findAll('mentor');
+	}
 });

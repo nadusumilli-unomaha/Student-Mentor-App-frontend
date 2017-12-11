@@ -2,11 +2,14 @@ import DS from 'ember-data';
 
 const{
 	Model,
-	attr
+	attr,
+    belongsTo,
+    hasMany,
 } = DS;
 
 export default Model.extend({
-	user: DS.belongsTo('user'),
+	user: belongsTo('user'),
+    students: hasMany('student'),
 	video : attr(),
     cv : attr(),
     bio : attr(),

@@ -1,9 +1,24 @@
-import Controller from '@ember/controller';
 import Ember from 'ember';
+import config from '../../config/environment';
 import pagedArray from 'ember-cli-pagination/computed/paged-array';
 
+const {
+	Controller,
+	inject: { service }
+} = Ember;
+
 export default Controller.extend({
+	auth: service('auth-manager'),
 	selectedMentor: null,
+	displayMessage: false,
+	mentorRegistered: Ember.computed('model',function(){
+		console.log('Hello');
+		this.get('model').foreach(function(mentor){
+			console.log(mentor);
+		});
+		return false;
+	}),
+
 
 	// setup our query params
 	queryParams: ["page", "perPage"],
@@ -25,8 +40,18 @@ export default Controller.extend({
 	totalPages: Ember.computed.oneWay("pagedContent.totalPages"),
 
 	actions: {
-		submit: function(){
-			console.log('This is where i send an email or just add the mentor relationship to the student.');
+		submit: function(mentor, user){
+			var t = this;
+			var data = {
+				'mentor': mentor.id,
+				'user': user,
+			};
+			Ember.$.post(config.domainURL+'/api/addMentor/', data, function(response){
+				if(response.data.success){
+					t.get('auth').set('mentorAdded','You have registered for this mentor successfully');
+				}
+			});
+			this.set('modal1',false);
 		},
 
 		setMentor: function(mentor){
