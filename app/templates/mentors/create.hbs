@@ -1,78 +1,154 @@
 <div class="container">
 	<div class="col-md-8 col-md-offset-2">
-		{{#bs-form formLayout="vertical" model="mentor" onSubmit=(action "postMentor") as |form|}}
-			<div class="row reg-form-row">
-                <div class="col-md-6 {{usernameclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="username" label="username" placeholder="username" property="username" required=true}}
-                        <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+		<form>
+			<div class="row">
+                    <h4 class="text-center">Account Registration</h4>
+                </div>
+                {{#if validationErrorMsg}}
+                    <div class="alert alert-danger">
+                        <p style="text-align: center;">{{validationErrorMsg}}</p>
+                    </div>
+                {{/if}}
+                <!-- username and email row -->
+                <div class="row reg-form-row">
+                    <div class="col-md-6">
+                        <p class="reg-label">Username</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="reg-label">Email</p>
                     </div>
                 </div>
-                <div class="col-md-6 {{emailclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="email" label="Email" placeholder="Email" property="email" required=true}}
-                        <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                 <div class="row reg-form-row">
+                    <div class="col-md-6 {{usernameclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=username class='form-control' enter="register" placeholder="Username"}}
+                            <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 {{emailclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=email class='form-control' enter="register" placeholder="Email"}}
+                            <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row reg-form-row">
-                <div class="col-md-6 {{usernameclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="password" label="Password" placeholder="Password" property="password" required=true}}
-                        <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+
+                <!-- username and email row -->
+                <div class="row reg-form-row">
+                    <div class="col-md-6">
+                        <p class="reg-label">Password</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="reg-label">Video</p>
                     </div>
                 </div>
-                <div class="col-md-6 {{emailclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="video" label="Video" placeholder="Video" property="video" required=true }}
-                        <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                 <div class="row reg-form-row">
+                    <div class="col-md-6 {{usernameclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="password" value=password class='form-control' enter="register" placeholder="Password"}}
+                            <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 {{emailclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=video class='form-control' enter="register" placeholder="Video"}}
+                            <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row reg-form-row">
-                <div class="col-md-6 {{usernameclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="cv" label="CV" placeholder="CV" property="cv" required=true }}
-                        <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+
+                <!-- username and email row -->
+                <div class="row reg-form-row">
+                    <div class="col-md-6">
+                        <p class="reg-label">CV</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="reg-label">Experience</p>
                     </div>
                 </div>
-                <div class="col-md-6 {{emailclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="experience" label="Experience" placeholder="Experience" property="experience" required=true }}
-                        <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                 <div class="row reg-form-row">
+                    <div class="col-md-6 {{usernameclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=cv class='form-control' enter="register" placeholder="CV"}}
+                            <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 {{emailclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=experience class='form-control' enter="register" placeholder="Experience"}}
+                            <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row reg-form-row">
-                <div class="col-md-6 {{usernameclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="researchinterest" label="Research Interest" placeholder="Research Interest" property="researchinterest" required=true }}
-                        <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+
+                <!-- username and email row -->
+                <div class="row reg-form-row">
+                    <div class="col-md-6">
+                        <p class="reg-label">Research Interest</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="reg-label">Institution</p>
                     </div>
                 </div>
-                <div class="col-md-6 {{emailclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="institution" label="Institution" placeholder="Institution" property="institution" required=true }}
-                        <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                 <div class="row reg-form-row">
+                    <div class="col-md-6 {{usernameclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=researchinterest class='form-control' enter="register" placeholder="Research Interest"}}
+                            <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 {{emailclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=institution class='form-control' enter="register" placeholder="Institution"}}
+                            <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row reg-form-row">
-                <div class="col-md-6 {{usernameclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="fieldofstudy" label="Field of Study" placeholder="Field of Study" property="fieldofstudy" required=true }}
-                        <i class="glyphicon glyphicon-{{usernameIcon}} form-control-feedback "></i>
+
+                <!-- password row -->
+                <div class="row reg-form-row">
+                    <div class="col-md-6">
+                        <p class="reg-label">Field Of Study</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="reg-label">Webpage</p>
                     </div>
                 </div>
-                <div class="col-md-6 {{emailclasses}}">
-                    <div class="form-group has-feedback">
-                        {{form.element controlType="webpage" label="Webpage" placeholder="Webpage" property="webpage" required=true }}
-                        <i class="glyphicon glyphicon-{{emailIcon}} form-control-feedback "></i>
+                 <div class="row reg-form-row">
+                    <div class="col-md-6 {{passwordclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=fieldofstudy class='form-control' enter="register" placeholder="Field Of Study"}}
+                            <i class="glyphicon glyphicon-{{passwordIcon}} form-control-feedback "></i>
+                        </div>
+                   </div>
+                    <div class="col-md-6 {{confirmpasswordclasses}}">
+                        <div class="form-group has-feedback">
+                            {{input type="text" value=webpage class='form-control' enter="register" placeholder="Webpage"}}
+                            <i class="glyphicon glyphicon-{{confirmpasswordIcon}} form-control-feedback "></i>                                  
+                        </div>                              
                     </div>
                 </div>
-            </div>
-            {{form.element controlType="bio" label="Bio" property="bio" required=true}}
-			{{bs-button class="btn-block" defaultText="Submit" type="primary" buttonType="submit"}}
-		{{/bs-form}}
+
+                <div class="row reg-form-row">
+                    <div class="col-md-12">
+                        <p class="reg-label">Bio</p>
+                    </div>
+                </div>
+                 <div class="row reg-form-row">
+                    <div class="col-md-12 {{passwordclasses}}">
+                        <div class="form-group has-feedback">
+                            {{textarea value=bio class="form-control" }}
+                            <i class="glyphicon glyphicon-{{passwordIcon}} form-control-feedback "></i>
+                        </div>
+                   </div>
+                </div>
+
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-block btn-success" {{action "postMentor"}}>Sign Up</button>
+                    </div>
+                </div>
+		</form>
 	</div>	
 </div>
