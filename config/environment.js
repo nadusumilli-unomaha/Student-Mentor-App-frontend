@@ -62,9 +62,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = "static/ember/";
+    ENV.rootURL = "http://mentor.surgedisasters.com";
     ENV.routerRootURL = '/';
-    ENV.domainURL = 'http://www.surgedisasters.com';
+    ENV.domainURL = 'http://mentor.surgedisasters.com';
   }
 
   return ENV;
