@@ -62,7 +62,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = "http://mentor.surgedisasters.com";
+    ENV.rootURL = "http://mentor.surgedisasters.com/";
     ENV.routerRootURL = '/';
     ENV.domainURL = 'http://mentor.surgedisasters.com';
   }
