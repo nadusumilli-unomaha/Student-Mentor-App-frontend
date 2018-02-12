@@ -23,7 +23,7 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     routerRootURL: '/',
-    domainURL: 'http://localhost',
+    domainURL: 'http://www.surgedisasters.com',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -64,7 +64,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.rootURL = "static/ember/";
     ENV.routerRootURL = '/';
-    ENV.domainURL = 'http://localhost';
+    ENV.domainURL = 'http://www.surgedisasters.com';
   }
 
   return ENV;
