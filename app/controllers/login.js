@@ -18,8 +18,8 @@ export default Controller.extend({
 			this.get('auth').logout();
 		},
 		googleAuth: function(){
-			let auth = this;
-			let session = auth.get('session');
+			let login = this;
+			let session = login.get('session');
 			session.authenticate('authenticator:torii', 'google-oauth2').then(() => {
 				auth.store.queryRecord('student', {}).then((student) => {
 					console.log(student);
