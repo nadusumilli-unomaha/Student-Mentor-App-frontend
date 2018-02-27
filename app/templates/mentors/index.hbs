@@ -1,62 +1,73 @@
+<!--
+@Author: Matthew Hale <matthale>
+@Date:   2017-12-11T09:59:08-06:00
+@Email:  mlhale@unomaha.edu
+@Filename: index.hbs
+@Last modified by:   matthale
+@Last modified time: 2018-02-27T16:07:08-06:00
+@Copyright: Copyright (C) 2018 Matthew L. Hale
+-->
+
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="well">
-				{{page-numbers content=pagedContent}}
-				{{#each pagedContent as |mentor|}}
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<div class="row">
-								<div class="col=md-5">
-									{{!-- I frame to allow full screen options --}}
-									<iframe class="iframe"  allowfullscreen="allowfullscreen"
-													        mozallowfullscreen="mozallowfullscreen" 
-													        msallowfullscreen="msallowfullscreen" 
-													        oallowfullscreen="oallowfullscreen" 
-													        webkitallowfullscreen="webkitallowfullscreen"
-													        src="https://www.youtube.com/embed/vn9mMeWcgoM">
-								    </iframe>	
-								</div>
-								<div class="col-md-4">
-									<div class="mentorContent">
-										<strong>{{mentor.user.username}}</strong><br/>
-										{{mentor.bio}}<br/>
-										{{mentor.cv}}<br/>
-										{{mentor.user.email}}<br/>
-										{{mentor.institution}}<br/>
-										{{mentor.researchinterest}}<br/>
-										{{mentor.fieldofstudy}}<br/>
-									</div>	
-								</div>
-								
-							    {{!-- The mentor data to the left of the video. --}}
-							    <div class="col-md-3 outerDiv">
-							    	{{#each mentor.students as |student|}}
-										{{#if (equal student.user.id auth.user.id)}}
-											{{#bs-alert type="info" class="text-center"}}
-												Already your Mentor
-											{{/bs-alert}}
-										{{/if}}
-									{{/each}}
-									{{#bs-button class="btn btn-primary pull-right btnMentorSubmit" disabled=(equal auth.user.student.noofmentors 5) onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}Sign Up{{/bs-button}}
-							    </div>
-						    </div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+						<h4>Select your mentors </h4>
+				</div>
+				<div class="panel-body">
+					{{#each pagedContent as |mentor|}}
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="media">
+							  <div class="media-left">
+									<iframe class="embed-responsive-item" frameborder="0" style="height: 225px;" allowfullscreen="allowfullscreen"
+																	mozallowfullscreen="mozallowfullscreen"
+																	msallowfullscreen="msallowfullscreen"
+																	oallowfullscreen="oallowfullscreen"
+																	webkitallowfullscreen="webkitallowfullscreen"
+																	src={{mentor.video}}>
+									 </iframe>
+							  </div>
+							  <div class="media-body">
+							    <h4 class="media-heading">{{mentor.user.username}} ({{mentor.user.email}})</h4>
+									<p>
+										{{mentor.job}}<br>
+										{{mentor.institution}}
+									</p>
+									<p>
+										{{mentor.bio}}<br/><br>
+										<strong>Research Interests:</strong> {{mentor.researchinterest}}<br/>
+										<strong>Field of Study:</strong> {{mentor.fieldofstudy}}
+										{{#each mentor.students as |student|}}
+											{{#if (equal student.user.id auth.user.id)}}
+												{{#bs-alert type="info" class="text-center"}}
+													Already your Mentor
+												{{/bs-alert}}
+											{{/if}}
+										{{/each}}
+									</p>
+							  </div>
+								{{#bs-button class="btn btn-primary btn-block" disabled=(equal auth.user.student.noofmentors 5) onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}Add {{mentor.user.username}} as your mentor.{{/bs-button}}
+							</div>
+							</div>
 						</div>
-					</div>
-					
-				{{/each}}
-
-				{{#bs-modal-simple title="Sign Up" closeTitle="Cancel" submitTitle="Send" open=modal1 onHidden=(action (mut modal1) false)}}
-					{{#bs-form onSubmit=(action "submit" selectedMentor auth.user.id) model=this as |form|}}
-						<p><strong>to:</strong> {{selectedMentor.user.email}}</p>
-						<p><strong>from:</strong> {{auth.user.email}}</p>
-						<div class="form-group">
-							<label for="emailContent">Content:</label>
-							<textarea class="form-control" rows="5" id="emailContent">Prepopulated Message to send to mentor.</textarea>
-						</div>
-					{{/bs-form}}
-				{{/bs-modal-simple}}
-				{{page-numbers content=pagedContent}}
+					{{/each}}
+					{{#bs-modal-simple title="Add as your mentor" closeTitle="Cancel" submitTitle="Send" open=modal1 onHidden=(action (mut modal1) false)}}
+						{{#bs-form onSubmit=(action "submit" selectedMentor auth.user.id) model=this as |form|}}
+							<p><strong>to:</strong> {{selectedMentor.user.email}}</p>
+							<p><strong>from:</strong> {{auth.user.email}}</p>
+							<p><strong>Subject:</strong> Mentorship request for surge disasters project</p>
+							<div class="form-group">
+								<label for="emailContent">Content:</label>
+								{{textarea class="form-control" value=emailBody rows="5" id="emailContent"}}
+							</div>
+						{{/bs-form}}
+					{{/bs-modal-simple}}
+				</div>
+				<div class="panel-footer">{{page-numbers content=pagedContent}}</div>
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,15 @@
+/**
+ * @Author: Matthew Hale <matthale>
+ * @Date:   2017-12-11T09:59:08-06:00
+ * @Email:  mlhale@unomaha.edu
+ * @Filename: index.js
+ * @Last modified by:   matthale
+ * @Last modified time: 2018-02-27T16:04:18-06:00
+ * @Copyright: Copyright (C) 2018 Matthew L. Hale
+ */
+
+
+
 import Ember from 'ember';
 import config from '../../config/environment';
 import pagedArray from 'ember-cli-pagination/computed/paged-array';
@@ -18,6 +30,7 @@ export default Controller.extend({
 		});
 		return false;
 	}),
+	emailBody: '',
 
 
 	// setup our query params
@@ -52,10 +65,11 @@ export default Controller.extend({
 				}
 			});
 			this.set('modal1',false);
+			window.open("mailto:"+this.get('mentor.email')+"?subject=Mentorship%20request%20for%20surge%20disasters%20project&body="+this.get('emailBody'));
 		},
 
 		setMentor: function(mentor){
 			this.set('selectedMentor', mentor);
 		}
 	}
-});	
+});

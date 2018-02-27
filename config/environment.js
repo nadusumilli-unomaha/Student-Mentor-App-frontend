@@ -1,3 +1,15 @@
+/**
+ * @Author: Matthew Hale <matthale>
+ * @Date:   2017-12-11T09:59:08-06:00
+ * @Email:  mlhale@unomaha.edu
+ * @Filename: environment.js
+ * @Last modified by:   matthale
+ * @Last modified time: 2018-02-27T12:39:56-06:00
+ * @Copyright: Copyright (C) 2018 Matthew L. Hale
+ */
+
+
+
 /* eslint-env node */
 'use strict';
 
@@ -21,9 +33,9 @@ module.exports = function(environment) {
     },
     modulePrefix: 'frontend',
     environment,
-    rootURL: '',
+    rootURL: 'http://localhost/static/ember/',
     routerRootURL: '/',
-    domainURL: '',
+    domainURL: 'http://localhost',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
