@@ -21,7 +21,7 @@ export default Controller.extend({
 			let login = this;
 			let session = login.get('session');
 			session.authenticate('authenticator:torii', 'google-oauth2').then(() => {
-				auth.store.queryRecord('student', {}).then((student) => {
+				login.store.queryRecord('student', {}).then((student) => {
 					console.log(student);
 					session.set('currentUser', student);
 				});
