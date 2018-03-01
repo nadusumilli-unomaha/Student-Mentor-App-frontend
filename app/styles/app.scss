@@ -1,3 +1,13 @@
+// @Author: Matthew Hale <matthale>
+// @Date:   2017-12-11T09:59:08-06:00
+// @Email:  mlhale@unomaha.edu
+// @Filename: app.scss
+// @Last modified by:   matthale
+// @Last modified time: 2018-02-27T16:24:44-06:00
+// @Copyright: Copyright (C) 2018 Matthew L. Hale
+
+
+
 @import 'ember-paper';
 @import "bootstrap";
 @import "sections/register";
@@ -8,3 +18,13 @@
 @import 'ember-paper';
 @import "components/index";
 @import "ember-bootstrap/bootstrap";
+
+.copyrights {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #FFFFFF;
+  text-align: center;
+}

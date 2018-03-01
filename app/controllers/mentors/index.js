@@ -4,7 +4,7 @@
  * @Email:  mlhale@unomaha.edu
  * @Filename: index.js
  * @Last modified by:   matthale
- * @Last modified time: 2018-02-27T16:04:18-06:00
+ * @Last modified time: 2018-03-01T16:11:29-06:00
  * @Copyright: Copyright (C) 2018 Matthew L. Hale
  */
 
@@ -43,7 +43,10 @@ export default Controller.extend({
 
 	// can be called anything, I've called it pagedContent
 	// remember to iterate over pagedContent in your template
-	pagedContent: pagedArray('model', {
+	sortedModel: Ember.computed('model.@each.username',function(){
+		return this.get('model').sortBy('user.username')
+	}),
+	pagedContent: pagedArray('sortedModel', {
 		page: Ember.computed.alias("parent.page"),
 		perPage: Ember.computed.alias("parent.perPage")
 	}),
