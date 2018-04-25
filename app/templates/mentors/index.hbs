@@ -50,7 +50,21 @@
 										{{/each}}
 									</p>
 							  </div>
-								{{#bs-button class="btn btn-primary btn-block" disabled=(equal auth.user.student.noofmentors 5) onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}Add {{mentor.user.username}} as your mentor.{{/bs-button}}
+								{{#if (equal auth.user.student.noofmentors 5)}}
+									{{#if mentor.studentsmaxedout}}
+										{{#bs-button class="btn btn-primary btn-block" disabled=true onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}
+											Unfortunately, this mentor does not have any available mentee slots.
+										{{/bs-button}}
+									{{else}}
+										{{#bs-button class="btn btn-primary btn-block" disabled=true onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}
+											You have already selected 5 mentors.
+										{{/bs-button}}
+									{{/if}}
+								{{else}}
+									{{#bs-button class="btn btn-primary btn-block" disabled=(equal auth.user.student.noofmentors 5) onClick=(action (pipe (action "setMentor" mentor) (action (mut modal1) true)))}}
+										Add {{mentor.user.username}} as your mentor.
+									{{/bs-button}}
+								{{/if}}
 							</div>
 							</div>
 						</div>

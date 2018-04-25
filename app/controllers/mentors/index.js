@@ -4,7 +4,7 @@
  * @Email:  mlhale@unomaha.edu
  * @Filename: index.js
  * @Last modified by:   matthale
- * @Last modified time: 2018-03-01T16:11:29-06:00
+ * @Last modified time: 2018-04-25T12:35:50-05:00
  * @Copyright: Copyright (C) 2018 Matthew L. Hale
  */
 
@@ -68,7 +68,7 @@ export default Controller.extend({
 				}
 			});
 			this.set('modal1',false);
-			window.open("mailto:"+this.get('mentor.email')+"?subject=Mentorship%20request%20for%20surge%20disasters%20project&body="+this.get('emailBody'));
+			window.open("mailto:"+mentor.get('email')+"?subject=Mentorship%20request%20for%20surge%20disasters%20project&body="+this.get('emailBody'));
 		},
 
 		setMentor: function(mentor){
